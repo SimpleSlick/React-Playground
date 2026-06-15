@@ -1,0 +1,104 @@
+.parent{
+    height: 100%;
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    
+}
+
+.card{
+    height: 340px;
+    width: 290px;
+    border-radius: 32px;
+    background-color: #fff;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card .top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}
+
+.top img{
+    height: 42px;
+    width: 42px;
+    border-radius: 50%;
+    border: 1px solid #dadada;
+    padding: 2px;
+}
+
+.top button{
+    display: flex;
+    align-items: center;
+    border: 1px solid #dadada;
+    padding: 3px 6px;
+    font-size: 12px;
+    border-radius: 7px;
+    gap: 3px;
+    background-color: transparent;
+    color: #b1b1b1;
+}
+
+.center h3{
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.center h3 span{
+    font-size: 9px;
+    font-weight: 400;
+    color: #8c8c8c;
+}
+
+.center h2{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.center .tag{
+    display: flex;
+    margin-top: 10px;
+    gap: 5px;
+}
+
+.center .tag h4{
+    font-size: 13px;
+    background-color: #dadada;
+    padding: 4px 7px;
+    border-radius: 4.5px;
+    color: #293241;
+    font-weight: 300;
+}
+
+.bottom{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1.7px solid #d7d7d7ce;
+    padding-top: 10px;
+}
+
+.bottom button{
+    background-color: black;
+    color: white;
+    padding: 5.5px 12px;
+    border: none;
+    border-radius: 9px;
+    column-width: 600;
+}
+
+.bottom h3{
+    font-size: 17.8px;
+}
+
+.bottom p{
+    font-size: 11.4px;
+    color: #8c8c8c;
+}
