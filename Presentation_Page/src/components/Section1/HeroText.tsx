@@ -9,13 +9,11 @@ export default function HeroText() {
         segmentation
       </h3>
       <p className="text-xl font-medium text-slate-700">
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla natus
-        perferendis tempora laborum. Ab suscipit praesentium ipsa? Rem labore
-        tenetur laudantium quo cum totam, sapiente itaque enim minus dolorem at!
-        Dolorem sed culpa nisi voluptatem voluptas voluptate, error distinctio
-        molestiae iste voluptatum doloremque in illo quia a accusantium qui
-        maiores reiciendis exercitationem rerum? At magnam accusamus, recusandae
-        reiciendis quo perferendis?
+        Build stronger customer relationships through intelligent audience
+        segmentation. Understand the unique needs of every customer group,
+        identify growth opportunities, and deliver personalized digital banking
+        experiences that increase engagement, satisfaction, and long-term
+        loyalty.
       </p>
     </div>
   );
