@@ -1,4 +1,6 @@
 import { useState } from "react";
+import './index.css';
+import { Minimize2 } from 'lucide-react';
 
 type Task = {
   title: string;
@@ -58,7 +60,8 @@ export default function App() {
           }}
         ></textarea>
 
-        <button className="bg-white w-full text-black outline-none px-5 text-xl py-2 rounded-3xl active:bg-mist-500 active:text-zinc-200 active:scale-99">
+        {/* Input Submission */}
+        <button className="bg-white w-full text-black outline-none px-5 text-xl py-2 rounded-3xl hover:cursor-pointer active:bg-mist-500 active:text-zinc-200 active:scale-99">
           Add Notes
         </button>
       </form>
@@ -68,8 +71,11 @@ export default function App() {
 
         <div className="flex flex-wrap items-start justify-start gap-5 mt-6 h-full overflow-auto">
           {task.map((elem, idx) => {
-            return <div key={idx} className="h-52 w-48 rounded-2xl text-black p-3 bg-white">
-              <h2 className="leading-tight text-xl font-bold">{elem.title}</h2>
+            return <div key={idx} id="image" className="relative h-52 w-48 rounded-2xl text-black p-5 bg-cover">
+              <button onClick={() => {
+                console.log("btn clicked")
+              }} className="absolute cursor-pointer active:scale-90 top-5 right-5 rounded-full"><Minimize2 /></button>
+              <h3 className="leading-tight text-xl font-bold">{elem.title}</h3>
               <p className="mt-2 leading-tight font-medium text-neutral-700">{elem.details}</p>
             </div>
           })}
