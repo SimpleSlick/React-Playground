@@ -29,6 +29,16 @@ export default function App() {
     setDetails("");
   };
 
+  // Delete Button Handling
+  const delete_note = (idx: any) => {
+    const copyTask = [...task];
+
+    copyTask.splice(idx, 1);
+    setTask(copyTask);
+
+    // console.log("Note Deleted");
+  }
+
   return (
     <div className="h-screen lg:flex bg-black text-white">
       <form
@@ -69,12 +79,12 @@ export default function App() {
       <div className="lg:w-1/2 lg:border-l-2 p-10 h-screen">
         <h1 className="text-4xl font-bold">Recent Notes</h1>
 
-        <div className="flex flex-wrap items-start justify-start gap-5 mt-6 h-full overflow-auto">
+        <div className="flex flex-wrap items-start justify-start gap-5 mt-6 h-[90%] overflow-auto">
           {task.map((elem, idx) => {
-            return <div key={idx} id="image" className="relative h-52 w-48 rounded-2xl text-black p-5 bg-cover">
+            return <div key={idx} id="image" className="relative h-65 w-60 rounded-2xl text-black p-5 bg-cover">
               <button onClick={() => {
-                console.log("btn clicked")
-              }} className="absolute cursor-pointer active:scale-90 top-5 right-5 rounded-full"><Minimize2 /></button>
+                delete_note(idx)
+              }} className="absolute cursor-pointer active:scale-90 top-4 right-4 rounded-full"><Minimize2 size={18}/></button>
               <h3 className="leading-tight text-xl font-bold">{elem.title}</h3>
               <p className="mt-2 leading-tight font-medium text-neutral-700">{elem.details}</p>
             </div>
