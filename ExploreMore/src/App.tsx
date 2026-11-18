@@ -2,6 +2,7 @@ import { useState } from "react";
 import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
 import Trust from "./components/Trust";
+import Services from "./components/Services";
 
 export default function App(){
     const[theme, setTheme] = useState<"dark" | "light">(() => {
@@ -16,6 +17,8 @@ export default function App(){
 
             <Hero />
             <Trust />
+
+            <Services />
         </div>
     )
 }
