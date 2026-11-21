@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import Trust from "./components/Trust";
 import Services from "./components/Services";
 import OurWork from "./components/OurWork";
+import Teams from "./components/Teams";
 
 export default function App(){
     const[theme, setTheme] = useState<"dark" | "light">(() => {
@@ -21,6 +22,7 @@ export default function App(){
 
             <Services />
             <OurWork />
+            <Teams />
         </div>
     )
 }
