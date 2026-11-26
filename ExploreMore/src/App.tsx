@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import NavBar from "./components/NavBar";
 import Hero from "./components/Hero";
 import Trust from "./components/Trust";
@@ -6,29 +6,78 @@ import Services from "./components/Services";
 import OurWork from "./components/OurWork";
 import Teams from "./components/Teams";
 import ContactUs from "./components/contactUs";
-import {Toaster} from "react-hot-toast";
+import { Toaster } from "react-hot-toast";
 import Footer from "./components/Footer";
 
-export default function App(){
-    const[theme, setTheme] = useState<"dark" | "light">(() => {
-        const saveTheme = localStorage.getItem("theme");
+export default function App() {
+  const outlineRef = useRef<HTMLDivElement | null>(null);
+  const dotRef = useRef<HTMLDivElement | null>(null);
 
-        return saveTheme === "dark" ? "dark" : "light";
-    })
+  // refs for custom cursor position tracking
+  const mouse = useRef({ x: -100, y: -100 });
+  const position = useRef({ x: -100, y: -100 });
 
-    return(
-        <div className="dark:bg-black relative">
-            <Toaster />
-            <NavBar theme={theme} setTheme={setTheme}/>
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
+    };
+    document.addEventListener("mousemove", handleMouseMove);
 
-            <Hero />
-            <Trust />
+    let animationFrameId: number;
 
-            <Services />
-            <OurWork />
-            <Teams />
-            <ContactUs />
-            <Footer theme={theme}/>
-        </div>
-    )
+    const animate = () => {
+      position.current.x += (mouse.current.x - position.current.x) * 0.1;
+      position.current.y += (mouse.current.y - position.current.y) * 0.1;
+
+      if (dotRef.current && outlineRef.current) {
+        dotRef.current.style.transform = `translate3d(${mouse.current.x - 6}px, ${mouse.current.y - 6}px, 0)`;
+        outlineRef.current.style.transform = `translate3d(${position.current.x - 20}px, ${position.current.y - 20}px, 0)`;
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    const saveTheme = localStorage.getItem("theme");
+
+    return saveTheme === "dark" ? "dark" : "light";
+  });
+
+  return (
+    <div className="dark:bg-black relative">
+      <Toaster />
+      <NavBar theme={theme} setTheme={setTheme} />
+
+      <Hero />
+      <Trust />
+
+      <Services />
+      <OurWork />
+      <Teams />
+      <ContactUs />
+      <Footer theme={theme} />
+
+      {/* Custom Cursor Ring */}
+      <div
+        ref={outlineRef}
+        className="fixed top-0 left-0 h-10 w-10 rounded-full border border-primary pointer-events-none z-9999"
+        style={{transition: "transform 0.1s ease-out"}}
+      ></div>
+
+      {/* Custom cursor Dot */}
+      <div
+        ref={dotRef}
+        className="fixed top-0 left-0 h-3 w-3 rounded-full bg-primary pointer-events-none z-9999"
+      ></div>
+    </div>
+  );
 }
